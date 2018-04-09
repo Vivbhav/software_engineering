@@ -1,18 +1,14 @@
 import gi
-from func import view_calender_click
+from func import new_event_create
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-def view_calender_main_click():
-    view_calender_click()
-
 class GridWindow(Gtk.Window):
     
-    def b1_click(self, widget):
-        view_calender_main_click()
-
-    def b2_click(self, widget):
-        but_click()
+    def new_event_clicked(self, widget):     
+        disp = "Display this"
+        self.lab.set_text(disp) 
+        new_event_create() 
 
     def __init__(self):
         Gtk.Window.__init__(self, title="Choose an Option")
@@ -20,32 +16,27 @@ class GridWindow(Gtk.Window):
         self.notebook = Gtk.Notebook()
         self.add(self.notebook)
 
-        self.page1 = Gtk.Box()
+        self.page1 = Gtk.Grid()
         #self.page1.set_border_width(10)
-        self.page1.add(Gtk.Label('View Calendar'))
+        new_event_b= Gtk.ToggleButton(label="Create new event")
+        delete_event_b = Gtk.Button(label="Delete an event")
+        view_event_b = Gtk.Button(label="View events")
+        
+        self.lab = Gtk.Label()
+
+        self.page1.add(new_event_b)
+        self.page1.attach(delete_event_b, 1, 0, 1, 1)
+        self.page1.attach(view_event_b, 2, 0, 1, 1)
+        self.page1.attach(self.lab, 3, 0, 1, 1)
+
+        new_event_b.connect("toggled", self.new_event_clicked)
+
         self.notebook.append_page(self.page1, Gtk.Label('Calendar'))
 
         self.page2 = Gtk.Box()
         #self.page2.set_border_width(10)
         self.page2.add(Gtk.Label('Emails'))
         self.notebook.append_page(self.page2, Gtk.Label('Send Emails'))
-
-        """grid = Gtk.Grid()
-        self.add(grid)
-        
-        button1 = Gtk.Button(label="View Calender")
-        button2 = Gtk.Button(label="Send Emails")
-        button1.set_size_request(50, 100)
-        button2.set_size_request(50, 100)
-
-        button1.connect("clicked", self.b1_click)
-        button2.connect("clicked", self.b2_click)        
-
-        
-        
-        grid.add(button1)
-        #grid.attach(button2, 1, 0, 4, 4)
-        grid.add(button2)"""
 
 win = GridWindow()
 win.set_default_size(800, 1000)

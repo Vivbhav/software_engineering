@@ -1,2 +1,2 @@
-def view_calender_click():
-    print("from here") 
+def new_event_create():
+    print("from other file") 
