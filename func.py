@@ -1,2 +1,2 @@
-def on_click():
-    print("Can print from function in different file")
+def view_calender_click():
+    print("from here") 
