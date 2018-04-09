@@ -1,9 +1,11 @@
 import gi
+from func import on_click
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 def but_click():
     print("Inside generic function")
+    on_click()
 
 class GridWindow(Gtk.Window):
     
