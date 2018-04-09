@@ -6,8 +6,6 @@ from gi.repository import Gtk
 class GridWindow(Gtk.Window):
     
     def new_event_clicked(self, widget):     
-        disp = "Display this"
-        self.lab.set_text(disp) 
         new_event_create() 
 
     def __init__(self):
@@ -23,13 +21,11 @@ class GridWindow(Gtk.Window):
         view_event_b = Gtk.Button(label="View events")
         
         self.lab = Gtk.Label()
-        self.empty_lab = Gtk.Label()
+        self.date_lab = Gtk.Label()
 
         self.page1.add(new_event_b)
         self.page1.attach(delete_event_b, 1, 0, 1, 1)
         self.page1.attach(view_event_b, 2, 0, 1, 1)
-        self.page1.attach(self.lab, 0, 1, 1, 1)
-        
 
         new_event_b.connect("toggled", self.new_event_clicked)
 
