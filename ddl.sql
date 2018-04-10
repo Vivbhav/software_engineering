@@ -8,5 +8,5 @@ CREATE TABLE events (
 CREATE TABLE tasks (
 	task_id INT PRIMARY KEY AUTO_INCREMENT,
 	task_name VARCHAR(50), 
-	duration INT, 
+	duration INT
 );
