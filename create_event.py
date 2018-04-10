@@ -27,7 +27,7 @@ class GridWindow(Gtk.Window):
         self.page1.attach(delete_event_b, 1, 0, 1, 1)
         self.page1.attach(view_event_b, 2, 0, 1, 1)
 
-        new_event_b.connect("toggled", self.new_event_clicked)
+        #new_event_b.connect("toggled", self.new_event_clicked)
 
         self.notebook.append_page(self.page1, Gtk.Label('Calendar'))
 
