@@ -12,20 +12,32 @@ class ComboBoxWindow(Gtk.Window):
 
         self.set_border_width(10)
 
-        date_list= Gtk.ListStore(int)
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)        
+ 
+        date_list = Gtk.ListStore(int)
         dates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
         for date in dates:
             date_list.append([date])
 
-        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        name_combo = Gtk.ComboBox.new_with_model(date_list)
+        name_combo.connect("changed", self.on_date_list_changed)
+        renderer_text = Gtk.CellRendererText()
+        name_combo.pack_start(renderer_text, True)
+        name_combo.add_attribute(renderer_text, "text", 0)
+        vbox.pack_start(name_combo, False, False, True)
 
-        date_combo = Gtk.ComboBox.new_with_model_and_entry(date_list)
-        date_combo.connect("changed", self.on_date_combo_changed)
-        date_combo.set_entry_text_column(1)
-        vbox.pack_start(date_label, False, False, 0)
-        vbox.pack_start(date_combo, False, False, 0)
+        month_list = Gtk.ListStore(int)
+        months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+        for month in months:
+            month_list.append([month])
 
-        country_store = Gtk.ListStore(str)
+        month_combo = Gtk.ComboBox.new_with_model(month_list)
+        month_combo.connect("changed", self.on_month_list_changed)
+        renderer_text = Gtk.CellRendererText()
+        month_combo.pack_start(renderer_text, True)
+        month_combo.add_attribute(renderer_text, "text", 0)
+        vbox.pack_start(month_combo, False, False, True)
+        """country_store = Gtk.ListStore(int)
         countries = ["Austria", "Brazil", "Belgium", "France", "Germany",
             "Switzerland", "United Kingdom", "United States of America",
             "Uruguay"]
@@ -37,7 +49,7 @@ class ComboBoxWindow(Gtk.Window):
         renderer_text = Gtk.CellRendererText()
         country_combo.pack_start(renderer_text, True)
         country_combo.add_attribute(renderer_text, "text", 0)
-        vbox.pack_start(country_combo, False, False, True)
+        vbox.pack_start(country_combo, False, False, True)"""
 
         currencies = ["Euro", "US Dollars", "British Pound", "Japanese Yen",
             "Russian Ruble", "Mexican peso", "Swiss franc"]
@@ -51,7 +63,7 @@ class ComboBoxWindow(Gtk.Window):
 
         self.add(vbox)
 
-    def on_date_combo_changed(self, combo):
+    def on_date_list_changed(self, combo):
         tree_iter = combo.get_active_iter()
         if tree_iter is not None:
             model = combo.get_model()
@@ -61,7 +73,7 @@ class ComboBoxWindow(Gtk.Window):
             entry = combo.get_child()
             print("Entered: %s" % entry.get_text())
 
-    def on_country_combo_changed(self, combo):
+    def on_month_list_changed(self, combo):
         tree_iter = combo.get_active_iter()
         if tree_iter is not None:
             model = combo.get_model()
