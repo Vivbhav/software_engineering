@@ -38,11 +38,32 @@ def modify_event():
 
     cursor.execute(("insert into events_list(event_name,start_time,end_time) values('{}', '{}', '{}');".format(name, dt, dt_2)))
     cursor.execute(("commit;"))
-    
+ 
+def add_task():
+    name = raw_input("Enter name of task")   
+    duration = raw_input("Enter estimated duration of task\n")
+    cursor.execute(("insert into tasks(task_name,duration) values('{}', '{}');".format(name, duration)))
+    cursor.execute(("commit;"))
+
+def finish_task():
+    name = raw_input("Enter name of task finished")   
+    cursor.execute(("delete from tasks where task_name='{}';".format(name)))
+    cursor.execute(("commit;"))
+ 
+def modify_task():
+    name = raw_input("Enter name of task to modify it's duration")   
+    cursor.execute(("delete from tasks where task_name='{}';".format(name)))
+    cursor.execute(("commit;"))
+    duration = raw_input("Enter new estimated duration of task\n")
+    cursor.execute(("insert into tasks(task_name,duration) values('{}', '{}');".format(name, duration)))
+    cursor.execute(("commit;"))
+       
     
 #create_event()
 #delete_event("event2")
-modify_event()
-
+#modify_event()
+#add_task()
+#finish_task()
+modify_task()
 
 cursor.close();
