@@ -114,11 +114,41 @@ class MyWindow(Gtk.ApplicationWindow):
             self.state = tuple(self.state)
 
             	
+        ## all of this code for modification of event
+        if self.state[1] == 23:
+            self.end_dt = parser.parse(text)
+            cursor.execute(("insert into events_list(event_name,start_time,end_time) values('{}', '{}', '{}');".format(self.name, self.start_dt, self.end_dt)))
+            cursor.execute(("commit;"))
+            self.state = list(self.state)
+            self.state[1] = 24
+            self.state = tuple(self.state)
+
+        if self.state[1] == 22:
+            self.start_dt = parser.parse(text)
+            self.buffer1.insert_at_cursor("\ninsert new end time of event\n")
+            self.state = list(self.state)
+            self.state[1] = 23
+            self.state = tuple(self.state)
+
+        if self.state[1] == 21:
+            self.name = text
+            self.buffer1.insert_at_cursor("\ninsert new start time of event\n")
+            self.state = list(self.state)
+            self.state[1] = 22
+            self.state = tuple(self.state)
+        
+        if self.state[1] == 20:
+            self.buffer1.insert_at_cursor("\ninsert name of event to modify\n")
+            self.state = list(self.state)
+            self.state[1] = 21
+            self.state = tuple(self.state)
 
         if self.state[1] == 5:
             self.buffer1.insert_at_cursor("\ncreated event\n")      
         elif self.state[1] == 12:
             self.buffer1.insert_at_cursor("\ndeleted event\n")      
+        elif self.state[1] == 24:
+            self.buffer1.insert_at_cursor("\nmodified event\n")      
         elif self.state[1] == 0:
             self.buffer1.insert_at_cursor(self.state[0])      
         #else:
