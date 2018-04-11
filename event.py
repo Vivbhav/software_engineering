@@ -20,11 +20,29 @@ def create_event():
     #print cursor.execute(("insert into events_list(event_name,start_time,end_time) values('c', 'b', 'a');"))
 
 def delete_event(name):
-    cursor.execute(("select event_id from events_list where event_name='{}';".format(name)))
-    a = cursor.fetchone()
-        
+    print (name)
+    cursor.execute(("delete from events_list where event_name='{}';".format(name)))
+    cursor.execute(("commit;"))
+
+def modify_event():
+    name = raw_input("Enter name of event to modify")
+
+    start_time = raw_input("Enter new start time of event\n")
+    dt = parser.parse(start_time)
+
+    end_time = raw_input("Enter new end time of event\n")
+    dt_2 = parser.parse(end_time)
+
+    cursor.execute(("delete from events_list where event_name='{}';".format(name)))
+    cursor.execute(("commit;"))
+
+    cursor.execute(("insert into events_list(event_name,start_time,end_time) values('{}', '{}', '{}');".format(name, dt, dt_2)))
+    cursor.execute(("commit;"))
     
-create_event()
+    
+#create_event()
+#delete_event("event2")
+modify_event()
 
 
 cursor.close();
