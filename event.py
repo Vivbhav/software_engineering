@@ -1,19 +1,30 @@
-import mysql.connector
+import MySQLdb
 import datetime
-
 from dateutil import parser
 
-cnx = mysql.connector.connect(user='root', password='vivbhav97', host='127.0.0.1', database='project')
+cnx = MySQLdb.connect("localhost","root","vivbhav97","events" )
+#cnx.query('SET GLOBAL connect_timeout=6000')
 cursor = cnx.cursor()
 
-name = raw_input("Enter name of event")
+def create_event(): 
+    name = raw_input("Enter name of event")
 
-start_time = raw_input("Enter start time of event\n")
-dt = parser.parse(start_time)
+    start_time = raw_input("Enter start time of event\n")
+    dt = parser.parse(start_time)
 
-end_time = raw_input("Enter end time of event\n")
-dt_2 = parser.parse(end_time)
+    end_time = raw_input("Enter end time of event\n")
+    dt_2 = parser.parse(end_time)
 
-cursor.execute(("insert into events values ('{}', '{}', '{}');".format(name, dt, dt_2)))
-print (dt)
-print (dt_2)
+    cursor.execute(("insert into events_list(event_name,start_time,end_time) values('{}', '{}', '{}');".format(name, dt, dt_2)))
+    cursor.execute(("commit;"))
+    #print cursor.execute(("insert into events_list(event_name,start_time,end_time) values('c', 'b', 'a');"))
+
+def delete_event(name):
+    cursor.execute(("select event_id from events_list where event_name='{}';".format(name)))
+    a = cursor.fetchone()
+        
+    
+create_event()
+
+
+cursor.close();
