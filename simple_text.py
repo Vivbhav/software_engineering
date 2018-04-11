@@ -10,6 +10,7 @@ from dateutil import parser
 import mainCode
 import MySQLdb
 import time
+import smtplib
 
 cnx = MySQLdb.connect("localhost", "root", "vivbhav97", "events")
 cursor = cnx.cursor()
@@ -142,13 +143,64 @@ class MyWindow(Gtk.ApplicationWindow):
             self.state = list(self.state)
             self.state[1] = 21
             self.state = tuple(self.state)
+        
+        ## all this code to send email
+
+        if self.state[1] == 35:
+            self.password = text
+            server = smtplib.SMTP('smtp.gmail.com:587')
+            server.ehlo()
+            server.starttls()
+            server.login(self.username, self.password)
+            server.sendmail(self.fromaddr, self.toaddrs, self.msg)
+            server.quit()
+            self.state = list(self.state)
+            self.state[1] = 36
+            self.state = tuple(self.state)
+
+        if self.state[1] == 34:
+            self.username = text
+            self.buffer1.insert_at_cursor("\nEnter your email password\n")
+            self.state = list(self.state)
+            self.state[1] = 35
+            self.state = tuple(self.state)
+
+        if self.state[1] == 33:
+            self.msg = text
+            self.buffer1.insert_at_cursor("\nEnter your username\n")
+            self.state = list(self.state)
+            self.state[1] = 34
+            self.state = tuple(self.state)
+
+        if self.state[1] == 32:
+            self.toaddrs = text
+            self.buffer1.insert_at_cursor("\nEnter content of email\n")
+            self.state = list(self.state)
+            self.state[1] = 33
+            self.state = tuple(self.state)
+
+        if self.state[1] == 31:
+            self.fromaddr = text
+            self.buffer1.insert_at_cursor("\nEnter email to send email to\n")
+            self.state = list(self.state)
+            self.state[1] = 32
+            self.state = tuple(self.state)
+
+        if self.state[1] == 30:
+            self.buffer1.insert_at_cursor("\nEnter email id from where to send email\n")
+            self.state = list(self.state)
+            self.state[1] = 31
+            self.state = tuple(self.state)
+            
 
         if self.state[1] == 5:
             self.buffer1.insert_at_cursor("\ncreated event\n")      
         elif self.state[1] == 12:
             self.buffer1.insert_at_cursor("\ndeleted event\n")      
         elif self.state[1] == 24:
-            self.buffer1.insert_at_cursor("\nmodified event\n")      
+            self.buffer1.insert_at_cursor("\nmodified event\n")     
+        elif self.state[1] == 36:
+            self.buffer1.insert_at_cursor("\nemail sent\n")     
         elif self.state[1] == 0:
             self.buffer1.insert_at_cursor(self.state[0])      
         #else:

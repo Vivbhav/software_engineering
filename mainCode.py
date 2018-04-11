@@ -59,6 +59,10 @@ def main_code(string):
             return ("delete", 10)
         elif 'modify' in filtered_sentence:
             return ("modify", 20)
+    
+    if 'send' in filtered_sentence:
+        if 'mail' or 'email' in filtered_sentence:
+            return ("send email", 30)
 
     """if 'open' in filtered_sentence:
         #OPEN WEBSITE
