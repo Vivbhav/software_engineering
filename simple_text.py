@@ -43,13 +43,14 @@ class MyWindow(Gtk.ApplicationWindow):
         #self.add(scrolled_window)
 
     def enter_clicked(self, widget):
-	    start_iter = self.buffer1.get_start_iter()
+        start_iter = self.buffer1.get_start_iter()
         end_iter = self.buffer1.get_end_iter()
         text = self.buffer1.get_text(start_iter, end_iter, True)
     	#print ("i am in funtion")
         #output = self.buffer1.gtk_text_buffer_get_text()
         print (text)
-        
+        self.buffer1.insert_at_cursor("\nhi, how are you\n")        
+
 
 class MyApplication(Gtk.Application):
 
