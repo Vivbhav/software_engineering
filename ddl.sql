@@ -1,4 +1,4 @@
-CREATE TABLE events (
+CREATE TABLE events_list (
 	event_id INT PRIMARY KEY AUTO_INCREMENT,
 	event_name VARCHAR(50),
 	start_time VARCHAR(50),
