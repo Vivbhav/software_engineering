@@ -3,10 +3,21 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 import sys
 
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+
+from dateutil import parser
+import mainCode
+import MySQLdb
+import time
+
+cnx = MySQLdb.connect("localhost", "root", "vivbhav97", "events")
+cursor = cnx.cursor()
 
 class MyWindow(Gtk.ApplicationWindow):
 
     def __init__(self, app):
+        self.state = ("random", 0)
         Gtk.Window.__init__(self, title="TextView Example", application=app)
         self.set_default_size(300, 450)
 
@@ -49,7 +60,72 @@ class MyWindow(Gtk.ApplicationWindow):
     	#print ("i am in funtion")
         #output = self.buffer1.gtk_text_buffer_get_text()
         print (text)
-        self.buffer1.insert_at_cursor("\nhi, how are you\n")        
+    	#word_list = word_tokenize(string)
+
+	    #Setting up stop_words: words that are redundant.
+    	#stop_words = set(stopwords.words('english'))
+   
+        if self.state[1] == 0: 
+            self.state = mainCode.main_code(text)
+
+        ## all of this code for creation of event
+        if self.state[1] == 4:
+            self.end_dt = parser.parse(text)
+            cursor.execute(("insert into events_list(event_name,start_time,end_time) values('{}', '{}', '{}');".format(self.name, self.start_dt, self.end_dt)))
+            cursor.execute(("commit;"))
+            self.state = list(self.state)
+            self.state[1] = 5
+            self.state = tuple(self.state)
+
+        if self.state[1] == 3:
+            self.start_dt = parser.parse(text)
+            self.buffer1.insert_at_cursor("\ninsert end time of event\n")
+            self.state = list(self.state)
+            self.state[1] = 4
+            self.state = tuple(self.state)
+
+        if self.state[1] == 2:
+            self.name = text
+            self.buffer1.insert_at_cursor("\ninsert start time of event\n")
+            self.state = list(self.state)
+            self.state[1] = 3
+            self.state = tuple(self.state)
+        
+        if self.state[1] == 1:
+            self.buffer1.insert_at_cursor("\ninsert name of event\n")
+            self.state = list(self.state)
+            self.state[1] = 2
+            self.state = tuple(self.state)
+
+        ## all of this code for deletion of event
+
+        if self.state[1] == 11:
+            self.name = text    
+            cursor.execute(("delete from events_list where event_name='{}';".format(self.name)))
+            cursor.execute(("commit;"))
+            self.state = list(self.state)
+            self.state[1] = 12
+            self.state = tuple(self.state)
+
+        if self.state[1] == 10:
+            self.buffer1.insert_at_cursor("\nGive name of event to delete\n")
+            self.state = list(self.state)
+            self.state[1] = 11
+            self.state = tuple(self.state)
+
+            	
+
+        if self.state[1] == 5:
+            self.buffer1.insert_at_cursor("\ncreated event\n")      
+        elif self.state[1] == 12:
+            self.buffer1.insert_at_cursor("\ndeleted event\n")      
+        elif self.state[1] == 0:
+            self.buffer1.insert_at_cursor(self.state[0])      
+        #else:
+        #    self.buffer1.insert_at_cursor("garbage print")      
+				
+
+    #self.buffer1.insert_at_cursor("\nhi, how are you\n")        
 
 
 class MyApplication(Gtk.Application):
@@ -66,4 +142,4 @@ class MyApplication(Gtk.Application):
 
 app = MyApplication()
 exit_status = app.run(sys.argv)
-sys.exit(exit_status)
+sys.exit(exit_status)	
