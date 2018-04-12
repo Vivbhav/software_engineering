@@ -2,9 +2,9 @@ import speech_recognition as sr
 from time import ctime
 import time
 import os
-from gtts import gTTS
-import pyttsx3
-
+#from gtts import gTTS
+#import pyttsx3
+import pyttsx
 
 def speak(audioString):
     print(audioString)
@@ -17,4 +17,9 @@ def speak1(audioString):
     engine.say(audioString)
     engine.runAndWait
 
+def speak2(audioString):
+    engine = pyttsx.init()
+    engine.say(audioString)
+    engine.runAndWait()
 
+speak2("my name is vivek")
