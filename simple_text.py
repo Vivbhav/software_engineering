@@ -19,6 +19,8 @@ class MyWindow(Gtk.ApplicationWindow):
 
     def __init__(self, app):
         self.state = ("random", 0)
+        self.temp = "start"
+        self.start = "start"
         Gtk.Window.__init__(self, title="TextView Example", application=app)
         self.set_default_size(300, 450)
 
@@ -57,6 +59,9 @@ class MyWindow(Gtk.ApplicationWindow):
     def enter_clicked(self, widget):
         start_iter = self.buffer1.get_start_iter()
         end_iter = self.buffer1.get_end_iter()
+
+        self.temp = end_iter
+
         text = self.buffer1.get_text(start_iter, end_iter, True)
     	#print ("i am in funtion")
         #output = self.buffer1.gtk_text_buffer_get_text()
@@ -67,6 +72,7 @@ class MyWindow(Gtk.ApplicationWindow):
     	#stop_words = set(stopwords.words('english'))
    
         if self.state[1] == 0: 
+            print ("called main code")
             self.state = mainCode.main_code(text)
 
         ## all of this code for creation of event

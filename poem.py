@@ -16,7 +16,10 @@ driver.get('https://www.poets.org/poetsorg/poem-day')
 time.sleep(2)
 header = driver.find_elements_by_xpath("//*[@id='page-title']")[1].text
 content = driver.find_element_by_tag_name('pre').text
+
 print(header)
 
 print(content)
+to_return = (header, content)
 driver.close()
+return to_return
