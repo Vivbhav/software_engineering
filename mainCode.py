@@ -7,7 +7,7 @@ then calls the appropriate functions.
 
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-import poem
+#import poem
 """from Speech import speak
 from files import open_folder
 import firefox
@@ -52,10 +52,7 @@ def main_code(string):
         filtered_sentence = [w for w in word_list]
    
     if 'google' in filtered_sentence:
-        if 'videos' in filtered_sentence:
-            
-        else:
-            return ("in google", 0)     ## to call google function
+        return ("in google", 0)     ## to call google function
     elif 'event' in filtered_sentence:
         if 'create' in filtered_sentence:
             return ("create", 1)
@@ -68,8 +65,6 @@ def main_code(string):
     if 'send' in filtered_sentence:
         if 'mail' or 'email' in filtered_sentence:
             return ("send email", 30)
-    elif 
-        
     else:
         return ("not found", 0)
 
