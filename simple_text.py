@@ -12,6 +12,8 @@ import MySQLdb
 import time
 import smtplib
 import search
+import sentiment
+from pygame import mixer
 
 cnx = MySQLdb.connect("localhost", "root", "vivbhav97", "events")
 cursor = cnx.cursor()
@@ -204,7 +206,6 @@ class MyWindow(Gtk.ApplicationWindow):
             self.state = tuple(self.state)
         
         if self.state[1] == 41:
-            self.fromaddr = text
             data = search.search(text)
             self.buffer1.insert_at_cursor(data)
             self.state = list(self.state)
@@ -215,6 +216,38 @@ class MyWindow(Gtk.ApplicationWindow):
             self.buffer1.insert_at_cursor("\nEnter what do you want to google\n")
             self.state = list(self.state)
             self.state[1] = 41
+            self.state = tuple(self.state)
+        
+        if self.state[1] == 51:
+            out = sentiment.sentiment_analysis(text)
+            print ("printing sentiment output")
+            print (out)
+            print ("end of sentiment out")
+            mixer.init()
+            #self.buffer1.insert_at_cursor(out)
+            if int(out) == 0:
+                mixer.music.load('/home/vivek/Desktop/software_engineering/project/hello.mp3')
+                mixer.music.play()
+            elif int(out) == 1:
+                mixer.music.load('/home/vivek/Desktop/software_engineering/project/hello1.mp3')
+                mixer.music.play()
+            elif int(out) == 2:
+                mixer.music.load('/home/vivek/Desktop/software_engineering/project/hello2.mp3')
+                mixer.music.play()
+            elif int(out) == 3:
+                mixer.music.load('/home/vivek/Desktop/software_engineering/project/hello3.mp3')
+                mixer.music.play()
+            elif int(out) == 4:
+                mixer.music.load('/home/vivek/Desktop/software_engineering/project/hello4.mp3')
+                mixer.music.play()
+            self.state = list(self.state)
+            self.state[1] = 52
+            self.state = tuple(self.state)
+            
+        if self.state[1] == 50:
+            self.buffer1.insert_at_cursor("\nWhat are you thinking about\n")
+            self.state = list(self.state)
+            self.state[1] = 51
             self.state = tuple(self.state)
              
 

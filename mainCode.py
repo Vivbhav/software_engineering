@@ -61,9 +61,8 @@ def main_code(string):
         return (works, 0)
     elif 'sentiment' in filtered_sentence:
         if 'analysis' in filtered_sentence:
-            ans = sentiment.sentiment_analysis(string)
-            print (ans)
-            return ("sentiment", 0)
+            #ans = sentiment.sentiment_analysis(string)
+            return ("sentiment", 50)
     elif 'event' in filtered_sentence:
         if 'create' in filtered_sentence:
             return ("create", 1)
@@ -72,7 +71,8 @@ def main_code(string):
         elif 'modify' in filtered_sentence:
             return ("modify", 20)
     if 'poem' in filtered_sentence:
-        return (poem.poem(), 0)
+        poem.poem()
+        return ("done", 0)
     if 'send' in filtered_sentence:
         if 'mail' or 'email' in filtered_sentence:
             return ("send email", 30)
