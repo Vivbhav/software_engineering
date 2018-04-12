@@ -11,6 +11,7 @@ import mainCode
 import MySQLdb
 import time
 import smtplib
+import search
 
 cnx = MySQLdb.connect("localhost", "root", "vivbhav97", "events")
 cursor = cnx.cursor()
@@ -201,7 +202,21 @@ class MyWindow(Gtk.ApplicationWindow):
             self.state = list(self.state)
             self.state[1] = 31
             self.state = tuple(self.state)
-            
+        
+        if self.state[1] == 41:
+            self.fromaddr = text
+            data = search.search(text)
+            self.buffer1.insert_at_cursor(data)
+            self.state = list(self.state)
+            self.state[1] = 42
+            self.state = tuple(self.state)
+           
+        if self.state[1] == 40:
+            self.buffer1.insert_at_cursor("\nEnter what do you want to google\n")
+            self.state = list(self.state)
+            self.state[1] = 41
+            self.state = tuple(self.state)
+             
 
         if self.state[1] == 5:
             self.buffer1.insert_at_cursor("\ncreated event\n")      
@@ -210,7 +225,7 @@ class MyWindow(Gtk.ApplicationWindow):
         elif self.state[1] == 24:
             self.buffer1.insert_at_cursor("\nmodified event\n")     
         elif self.state[1] == 36:
-            self.buffer1.insert_at_cursor("\nemail sent\n")     
+            self.buffer1.insert_at_cursor("\nemail sent\n") 
         elif self.state[1] == 0:
             self.buffer1.insert_at_cursor(self.state[0])      
         #else:

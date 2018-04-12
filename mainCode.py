@@ -54,7 +54,7 @@ def main_code(string):
         filtered_sentence = [w for w in word_list]
    
     if 'google' in filtered_sentence:
-        return ("in google", 0)     ## to call google function
+        return ("google", 40)     ## to call google function
     elif 'youtube' in filtered_sentence:
         print ("inside youtube in maincode")
         works = os.system('python3 youtube.py ' + "cricket")    
