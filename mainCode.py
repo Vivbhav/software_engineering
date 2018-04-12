@@ -7,14 +7,16 @@ then calls the appropriate functions.
 
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-#import poem
+import poem
+import sentiment
+import vlc
+import os
 """from Speech import speak
 from files import open_folder
 import firefox
 from playmovie import fn_movie, fn_close_movie
 from songs import fn_play_song, fn_close_song
 from pdf import fn_open_pdf, fn_close_pdf
-import os
 import time, datetime
 import reminder
 import terminal
@@ -45,7 +47,7 @@ def main_code(string):
 
     #Creating space for a list of sentences without stop_words.
 
-    
+    ans = 0
     if "search" not in word_list and "google" not in word_list:
         filtered_sentence = [w for w in word_list if not w in stop_words]
     else:
@@ -53,6 +55,13 @@ def main_code(string):
    
     if 'google' in filtered_sentence:
         return ("in google", 0)     ## to call google function
+    elif 'youtube' in filtered_sentence:
+        os.system('python3 youtube.py ' + "cricket")    
+    elif 'sentiment' in filtered_sentence:
+        if 'analysis' in filtered_sentence:
+            ans = sentiment.sentiment_analysis(string)
+            print (ans)
+            return ("sentiment", 0)
     elif 'event' in filtered_sentence:
         if 'create' in filtered_sentence:
             return ("create", 1)

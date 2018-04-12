@@ -60,12 +60,16 @@ class MyWindow(Gtk.ApplicationWindow):
         start_iter = self.buffer1.get_start_iter()
         end_iter = self.buffer1.get_end_iter()
 
-        self.temp = end_iter
+        #self.temp = end_iter
 
         text = self.buffer1.get_text(start_iter, end_iter, True)
     	#print ("i am in funtion")
         #output = self.buffer1.gtk_text_buffer_get_text()
+        a = text.strip().split("\n")
+        text = a[-1]
+        print ("start of text")
         print (text)
+        print ("end of text")
     	#word_list = word_tokenize(string)
 
 	    #Setting up stop_words: words that are redundant.
