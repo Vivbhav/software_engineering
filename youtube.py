@@ -14,6 +14,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 
 def youtube(string):
+    print ("testing from youtube")
+    print (string)
+    print ("testing from youtube ended")
     query_string = urllib.parse.urlencode({"search_query" : string})
     cond = input("Show all results (1) / Play Most Relevant (2)- ")
     html_content = urllib.request.urlopen("http://www.youtube.com/results?" + query_string)

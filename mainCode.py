@@ -56,7 +56,9 @@ def main_code(string):
     if 'google' in filtered_sentence:
         return ("in google", 0)     ## to call google function
     elif 'youtube' in filtered_sentence:
-        os.system('python3 youtube.py ' + "cricket")    
+        print ("inside youtube in maincode")
+        works = os.system('python3 youtube.py ' + "cricket")    
+        return (works, 0)
     elif 'sentiment' in filtered_sentence:
         if 'analysis' in filtered_sentence:
             ans = sentiment.sentiment_analysis(string)
@@ -70,7 +72,7 @@ def main_code(string):
         elif 'modify' in filtered_sentence:
             return ("modify", 20)
     if 'poem' in filtered_sentence:
-        return poem.poem()
+        return (poem.poem(), 0)
     if 'send' in filtered_sentence:
         if 'mail' or 'email' in filtered_sentence:
             return ("send email", 30)
