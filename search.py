@@ -10,15 +10,15 @@ def search(string):
 	#query = input("Enter your query- ")
     query = string
     cmd = "googler -C "+query+" | tee out.txt"
-
+    print (cmd)
 	#following Code Only Generates Links, Not Info 
 	#for j in search(query, tld="co.in", num=1, stop=1, pause=2):
 	#    print(j)
     os.system(cmd)
 
-    with open('out.txt', 'r') as myfile:
-		data = myfile.read()
-		return data
+    #with open('out.txt', 'r') as myfile:
+    #		data = myfile.read()
+    #		return data
 
 #data = search("cricket")
 #print (data)
