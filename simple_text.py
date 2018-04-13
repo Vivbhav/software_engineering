@@ -15,7 +15,7 @@ import search
 import sentiment
 from pygame import mixer
 import youtube_final
-import text_to_speech
+#import text_to_speech
 
 try:
     cnx = MySQLdb.connect("localhost", "root", "vivbhav97", "events")
@@ -40,6 +40,20 @@ class MyWindow(Gtk.ApplicationWindow):
         enter_button.connect("clicked", self.enter_clicked)
         self.box.pack_start(enter_button, False, True, 0)
 
+        self.box1 = Gtk.HBox(True, 2)
+        scroll = Gtk.ScrolledWindow()
+        scroll.set_hexpand(True)
+        scroll.set_vexpand(True)
+        scroll.set_border_width(5)
+        scroll.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        self.buffer2 = Gtk.TextBuffer()
+        self.textview2 = Gtk.TextView(buffer=self.buffer2)
+        self.textview2.set_wrap_mode(Gtk.WrapMode.WORD)
+        scroll.add(self.textview2)
+        self.buffer2.insert_at_cursor("Commands\n")
+
+
         scrolled_window = Gtk.ScrolledWindow()
         scrolled_window.set_hexpand(True)
         scrolled_window.set_vexpand(True)
@@ -60,8 +74,10 @@ class MyWindow(Gtk.ApplicationWindow):
 
         # textview is scrolled
         scrolled_window.add(self.textview)
-
-        self.box.pack_start(scrolled_window, True, True, 0)       
+    
+        self.box1.pack_start(scrolled_window, True, True, 0)
+        self.box1.pack_start(scroll, True, True, 0)
+        self.box.pack_start(self.box1, True, True, 0)       
 
         #self.add(scrolled_window)
 
@@ -277,6 +293,7 @@ class MyWindow(Gtk.ApplicationWindow):
             myfile = open("out.txt", "r")
             data = myfile.read()
             print (data)
+            print ("google results printing over")
             self.buffer1.insert_at_cursor(data)
             self.state = list(self.state)
             self.state[1] = 0 #42

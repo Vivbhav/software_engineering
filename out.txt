@@ -1,53 +1,37 @@
- 1 Python Tutorial - Tutorialspoint
-https://www.tutorialspoint.com/python/
-Python is a general-purpose interpreted, interactive, object-oriented, and high-level programming language. It was created by Guido van Rossum during 1985- 1990. Like Perl, Python source code is also available under the GNU General Public License (GPL). This tutorial gives enough understanding on Python ...
+ 1 Live Cricket Score | Scorecard | Live Commentary | Cricbuzz.com
+http://www.cricbuzz.com/cricket-match/live-scores
+IPL 2018 Live Cricket Score, Ball by Ball Commentary, Scorecard Updates, Match Facts & related News of all International, Domestic and IPL Cricket Matches across the globe.
 
-     1a Python 3 tutorial
-    https://www.tutorialspoint.com/python3/index.htm
-Python 3 Tutorial for Beginners - Learn Python 3 in simple and ...
+ 2 Cricbuzz.com: IPL 2018, Cricket Score, Schedule, Latest News, Stats ...
+http://www.cricbuzz.com/
+Get Live Cricket Scores, Scorecard, Schedules of International, Domestic and IPL Cricket Matches along with Latest News, Videos and ICC Cricket Rankings of Players on Cricbuzz.
 
-     1b Python Overview
-    https://www.tutorialspoint.com/python/python_overview.htm
-Python Overview - Learn Python in simple and easy steps starting ...
+ 3 Live cricket Scores | Ball by Ball commentary | ESPNcricinfo
+http://m.espncricinfo.com/ci/engine/match/index.html
+Live cricket scores and commentary from around the world, updated real-time, from ESPN Cricinfo.
 
-     1c Python Tutorial in PDF
-    https://www.tutorialspoint.com/python/python_pdf_version.htm
-Python Tutorial in PDF - Learn Python in simple and easy steps ...
+ 4 Cricket - Wikipedia
+https://en.wikipedia.org/wiki/Cricket
+Cricket is a bat-and-ball game played between two teams of eleven players each on a cricket field, at the centre of which is a rectangular 20-metre (22-yard) pitch with a target at each end called the wicket (a set of three wooden stumps upon which two bails sit). Each phase of play is called an innings, during which one ...
 
-     1d Python Modules
-    https://www.tutorialspoint.com/python/python_modules.htm
-Python Modules - Learn Python in simple and easy steps starting ...
+ 5 IPL 2018 Live Score Cricket, RCB vs KXIP: Ashwin's Punjab Look to ...
+https://www.news18.com/cricketnext/news/ipl-2018-live-score-cricket-rcb-vs-kxip-ashwins-punjab-look-to-build-on-winning-start-1717699.html
+5 hours ago - Catch all the live action of the IPL 2018 match between Royal Challengers Bangalore and Kings XI Punjab through our live blog.
 
-     1e Python Online Training
-    https://www.tutorialspoint.com/python_online_training/index.asp
-Python Online Training. Python is a general-purpose interpreted ...
+ 6 IPL Live Score Cricket, RCB vs KXIP: Virat Kohli Dealing in ...
+https://www.news18.com/cricketnext/news/ipl-2018-live-score-cricket-rcb-vs-kxip-bangalore-win-toss-kohli-opts-to-bowl-first-1717699.html
+1 hour ago - Catch all the live action of the IPL 2018 match between Royal Challengers Bangalore and Kings XI Punjab through our live blog.
 
-     1f Python Lists
-    https://www.tutorialspoint.com/python/python_lists.htm
-Python Lists - Learn Python in simple and easy steps starting ...
+ 7 IPL 2018, LIVE Cricket Score, RCB vs KXIP at Bengaluru: Royal ...
+https://www.firstpost.com/firstcricket/sports-news/ipl-2018-live-cricket-score-rcb-vs-kxip-at-bengaluru-royal-challengers-bangalore-need-156-to-win-4430679.html
+1 hour ago - RCB have won three out of seven matches against KXIP while chasing in IPL. Will they be able to defeat KXIP today? Full Scorecard. Chetan Narula, Freelance cricket journalist 21:49 (IST). 155 all out. Not enough for this pitch, not enough given how Kings XI started off. Lost wickets in bunches twice during ...
 
- 2 Django Tutorial - Tutorialspoint
-https://www.tutorialspoint.com/django/index.htm
-Django Tutorial for Beginners - Learn Django in simple and easy steps starting from basic to advanced concepts with examples including Basics, Overview, Environment, Creating a Project, Apps Life Cycle, Admin Interface, Creating Views, URL Mapping, Template System, Models, Page Redirection, Sending E-mails, ...
+ 8 Live Cricket Scores, Highlights, Cricket News, Results, Stats, Cricket ...
+https://sports.ndtv.com/cricket
+Read all the latest information related to Cricket, live scores,Cricket news, results, stats, videos, highlights. Find all the Cricket matches schedules at NDTV Sports.
 
- 3 Flask Tutorial - Tutorialspoint
-https://www.tutorialspoint.com/flask/index.htm
-Flask is a web application framework written in Python. Armin Ronacher, who leads an international group of Python enthusiasts named Pocco, develops it. Flask is based on Werkzeug WSGI toolkit and Jinja2 template engine. Both are Pocco projects.
-
- 4 NumPy Tutorial - Tutorialspoint
-https://www.tutorialspoint.com/numpy/index.htm
-NumPy, which stands for Numerical Python, is a library consisting of multidimensional array objects and a collection of routines for processing those arrays. Using NumPy, mathematical and logical operations on arrays can be performed. This tutorial explains the basics of NumPy such as its architecture and environment.
-
- 5 PyQt Tutorial - Tutorialspoint
-https://www.tutorialspoint.com/pyqt/index.htm
-PyQt is a GUI widgets toolkit. It is a Python interface for Qt, one of the most powerful, and popular cross-platform GUI library. PyQt is a blend of Python programming language and the Qt library. This introductory tutorial will assist you in creating graphical applications with the help of PyQt.
-
- 6 NumPy Matplotlib - Tutorialspoint
-https://www.tutorialspoint.com/numpy/numpy_matplotlib.htm
-Matplotlib is a plotting library for Python. It is used along with NumPy to provide an environment that is an effective open source alternative for MatLab. It can also be used with graphics toolkits like PyQt and wxPython. Matplotlib module was first written by John D. Hunter. Since 2012, Michael Droettboom is the principal ...
-
- 7 I have learned Python from Tutorials Point. What should I do to ...
-https://www.quora.com/I-have-learned-Python-from-Tutorials-Point-What-should-I-do-to-learn-more-topics-so-that-I-can-have-more-advantages-on-my-interviews
-Go through Google's Python Class and complete all the exercises. You might learn a few more libraries as well as you take up this course. Tutorial's point though good for beginners doesn't provide coding practice. Once you are done; you can go t...
+ 9 Cricket News: Latest Cricket News, Live Cricket Score Updates ...
+https://timesofindia.indiatimes.com/sports/cricket
+Cricket News: Check live cricket score, schedule, results, scorecard, cricket news and ball by ball commentary along with player stats, player profiles, team profiles and live cricket commentary on Times of India Cricket.
 
 googler (? for help): 
