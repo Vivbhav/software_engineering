@@ -29,6 +29,7 @@ class MyWindow(Gtk.ApplicationWindow):
         self.state = ("random", 0)
         self.temp = "start"
         self.start = "start"
+        self.count = 0 
         Gtk.Window.__init__(self, title="Virtual Personal Assistant", application=app)
         self.set_default_size(300, 450)
 
@@ -53,16 +54,32 @@ class MyWindow(Gtk.ApplicationWindow):
         self.buffer1 = Gtk.TextBuffer()
 
         # a textview (displays the buffer)
-        textview = Gtk.TextView(buffer=self.buffer1)
+        self.textview = Gtk.TextView(buffer=self.buffer1)
         # wrap the text, if needed, breaking lines in between words
-        textview.set_wrap_mode(Gtk.WrapMode.WORD)
+        self.textview.set_wrap_mode(Gtk.WrapMode.WORD)
 
         # textview is scrolled
-        scrolled_window.add(textview)
+        scrolled_window.add(self.textview)
 
         self.box.pack_start(scrolled_window, True, True, 0)       
 
         #self.add(scrolled_window)
+
+    def color_to_give(self, widget):
+        for i in range(self.count):
+            if i % 2:
+                tag = self.buffer1.create_tag("green_bg", background="green")
+                start_iter = self.buffer1.get_iter_at_line(i)
+                end_iter = self.buffer1.get_iter_at_line(i + 1)
+                self.buffer1.apply_tag(tag, start_iter, end_iter)                    
+                self.buffer1.remove_all_tags(start_iter, end_iter)
+            else:
+                tag2 = self.buffer1.create_tag("red_bg", background="red")
+                start_iter = self.buffer1.get_iter_at_line(i)
+                end_iter = self.buffer1.get_iter_at_line(i + 1)
+                self.buffer1.apply_tag(tag2, start_iter, end_iter)
+                self.buffer1.remove_all_tags(start_iter, end_iter)
+        self.count += 2       
 
     def enter_clicked(self, widget):
         start_iter = self.buffer1.get_start_iter()
@@ -82,7 +99,7 @@ class MyWindow(Gtk.ApplicationWindow):
         print ("start of text")
         print (text)
         print ("end of text")
-        
+       
     	#word_list = word_tokenize(string)
 
 	    #Setting up stop_words: words that are redundant.
@@ -94,6 +111,11 @@ class MyWindow(Gtk.ApplicationWindow):
 
         ## all of this code for creation of event
         if self.state[1] == 4:
+            #tag = self.buffer1.create_tag("green_bg", background="green")
+            #start_iter = self.buffer1.get_start_iter()
+            #end_iter = self.buffer1.get_end_iter()
+            #self.buffer1.apply_tag(tag, start_iter, end_iter)
+            #self.buffer1.remove_all_tags(start_iter, end_iter)
             self.end_dt = parser.parse(text)
             cursor.execute(("insert into events_list(event_name,start_time,end_time) values('{}', '{}', '{}');".format(self.name, self.start_dt, self.end_dt)))
             text_to_speech.speak("inserted your event")
@@ -101,29 +123,48 @@ class MyWindow(Gtk.ApplicationWindow):
             self.state = list(self.state)
             self.state[1] = 5
             self.state = tuple(self.state)
+            #color_to_give()
 
         if self.state[1] == 3:
+            #tag = self.buffer1.create_tag("red_bg", background="red")
+            #start_iter = self.buffer1.get_start_iter()
+            #end_iter = self.buffer1.get_end_iter()
+            #self.buffer1.apply_tag(tag, start_iter, end_iter)
             self.start_dt = parser.parse(text)
             self.buffer1.insert_at_cursor("\ninsert end time of event\n")
+            #self.buffer1.remove_all_tags(start_iter, end_iter)
             text_to_speech.speak("insert end time of event")
             self.state = list(self.state)
             self.state[1] = 4
             self.state = tuple(self.state)
+            #color_to_give()
 
         if self.state[1] == 2:
+            #tag = self.buffer1.create_tag("green_bg", background="green")
+            #start_iter = self.buffer1.get_start_iter()
+            #end_iter = self.buffer1.get_end_iter()
+            #self.buffer1.apply_tag(tag, start_iter, end_iter)
             self.name = text
             self.buffer1.insert_at_cursor("\ninsert start time of event\n")
+            #self.buffer1.remove_all_tags(start_iter, end_iter)
             text_to_speech.speak("insert start time of event")
             self.state = list(self.state)
             self.state[1] = 3
             self.state = tuple(self.state)
+            #color_to_give()
         
         if self.state[1] == 1:
-            self.buffer1.insert_at_cursor("\ninsert name of event\n")
+            #tag = self.buffer1.create_tag("red_bg", background="red")
+            #start_iter = self.buffer1.get_start_iter()
+            #end_iter = self.buffer1.get_end_iter()
+            #self.buffer1.apply_tag(tag, start_iter, end_iter)
+            self.buffer1.insert_at_cursor("\ninsert name of event to create\n")
+            #self.buffer1.remove_all_tags(start_iter, end_iter)
             text_to_speech.speak("insert name of event")
             self.state = list(self.state)
             self.state[1] = 2
             self.state = tuple(self.state)
+            #color_to_give()
 
         ## all of this code for deletion of event
 
@@ -254,7 +295,7 @@ class MyWindow(Gtk.ApplicationWindow):
             print (out)
             print ("end of sentiment out")
             mixer.init()
-            #self.buffer1.insert_at_cursor(out)
+            self.buffer1.insert_at_cursor(out)
             if int(out) == 0:
                 mixer.music.load('/home/vivek/Desktop/software_engineering/project/hello.mp3')
                 mixer.music.play()
