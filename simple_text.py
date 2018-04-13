@@ -27,7 +27,7 @@ class MyWindow(Gtk.ApplicationWindow):
         self.state = ("random", 0)
         self.temp = "start"
         self.start = "start"
-        Gtk.Window.__init__(self, title="TextView Example", application=app)
+        Gtk.Window.__init__(self, title="Virtual Personal Assistant", application=app)
         self.set_default_size(300, 450)
 
         self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)

@@ -80,5 +80,5 @@ def main_code(string):
         if 'mail' or 'email' in filtered_sentence:
             return ("send email", 30)
     else:
-        return ("not found", 0)
+        return ("Sorry, can't process your request. Please try something else.", 0)
 
