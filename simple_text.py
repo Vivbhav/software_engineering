@@ -14,8 +14,11 @@ import smtplib
 import search
 import sentiment
 from pygame import mixer
-
-cnx = MySQLdb.connect("localhost", "root", "vivbhav97", "events")
+import youtube_final
+try:
+    cnx = MySQLdb.connect("localhost", "root", "vivbhav97", "events")
+except:
+    cnx = MySQLdb.connect("localhost", "root", "Amritraj26", "events")
 cursor = cnx.cursor()
 
 class MyWindow(Gtk.ApplicationWindow):
@@ -206,7 +209,10 @@ class MyWindow(Gtk.ApplicationWindow):
             self.state = tuple(self.state)
         
         if self.state[1] == 41:
-            data = search.search(text)
+            search.search(text)	
+	    time.sleep(15)
+	    myfile = open("out.txt", "r")
+	    data = myfile.read()
             self.buffer1.insert_at_cursor(data)
             self.state = list(self.state)
             self.state[1] = 42
@@ -255,7 +261,26 @@ class MyWindow(Gtk.ApplicationWindow):
             rows = [i for i in cursor]
             to_print = str(rows).strip('[]')
             self.buffer1.insert_at_cursor(to_print)
-             
+
+        if self.state[1] == 71:
+	    a = text.strip().split("#")
+	    print (a)
+	    para1 = a[0]
+	    para2 = a[1]
+	    print (para1)
+	    print (para2)
+            data = youtube_final.youtube(para1, para2)
+            self.buffer1.insert_at_cursor(data)
+            self.state = list(self.state)
+            self.state[1] = 72
+            self.state = tuple(self.state)
+	
+	if self.state[1] == 70:
+            self.buffer1.insert_at_cursor("\nWhat should I search on youtube, Also enter (1) to show all results or (2) to play the most relevant one\n")
+            self.state = list(self.state)
+            self.state[1] = 71
+            self.state = tuple(self.state)
+	                 
 
         if self.state[1] == 5:
             self.buffer1.insert_at_cursor("\ncreated event\n")      
