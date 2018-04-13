@@ -74,15 +74,20 @@ class MyWindow(Gtk.ApplicationWindow):
         #output = self.buffer1.gtk_text_buffer_get_text()
         a = text.strip().split("\n")
         text = a[-1]
+        a = text.strip().split("\n")
+        text = ""
+        for i in a:
+            text += str(i)
         print ("start of text")
         print (text)
         print ("end of text")
+        
     	#word_list = word_tokenize(string)
 
 	    #Setting up stop_words: words that are redundant.
     	#stop_words = set(stopwords.words('english'))
    
-        if self.state[1] == 0: 
+        if self.state[1] == 0 or self.state[1] == 5 or self.state[1] == 12 or self.state[1] == 24 or self.state[1] == 36 or self.state[1] == 42 or self.state[1] == 52:
             print ("called main code")
             self.state = mainCode.main_code(text)
 
@@ -92,7 +97,7 @@ class MyWindow(Gtk.ApplicationWindow):
             cursor.execute(("insert into events_list(event_name,start_time,end_time) values('{}', '{}', '{}');".format(self.name, self.start_dt, self.end_dt)))
             cursor.execute(("commit;"))
             self.state = list(self.state)
-            self.state[1] = 0 #5
+            self.state[1] = 5
             self.state = tuple(self.state)
 
         if self.state[1] == 3:
@@ -150,6 +155,8 @@ class MyWindow(Gtk.ApplicationWindow):
 
         if self.state[1] == 21:
             self.name = text
+            cursor.execute(("delete from events_list where event_name='{}';".format(self.name)))
+            cursor.execute(("commit;"))
             self.buffer1.insert_at_cursor("\ninsert new start time of event\n")
             self.state = list(self.state)
             self.state[1] = 22
@@ -261,8 +268,9 @@ class MyWindow(Gtk.ApplicationWindow):
         if self.state[1] == 60:
             cursor.execute("select * from events_list order by start_time;")
             rows = [i for i in cursor]
-            to_print = str(rows).strip('[]')
-            self.buffer1.insert_at_cursor(to_print)
+            self.buffer1.insert_at_cursor("\n")
+            for i in rows:
+                self.buffer1.insert_at_cursor(str(i[1]) + "\t" + str(i[2]) + "\t" + str(i[3]) + "\n")
 
         if self.state[1] == 71:
 	    a = text.strip().split("#")
