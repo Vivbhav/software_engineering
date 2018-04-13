@@ -88,7 +88,7 @@ class MyWindow(Gtk.ApplicationWindow):
             cursor.execute(("insert into events_list(event_name,start_time,end_time) values('{}', '{}', '{}');".format(self.name, self.start_dt, self.end_dt)))
             cursor.execute(("commit;"))
             self.state = list(self.state)
-            self.state[1] = 5
+            self.state[1] = 0 #5
             self.state = tuple(self.state)
 
         if self.state[1] == 3:
@@ -118,7 +118,7 @@ class MyWindow(Gtk.ApplicationWindow):
             cursor.execute(("delete from events_list where event_name='{}';".format(self.name)))
             cursor.execute(("commit;"))
             self.state = list(self.state)
-            self.state[1] = 12
+            self.state[1] = 0 #12
             self.state = tuple(self.state)
 
         if self.state[1] == 10:
@@ -134,7 +134,7 @@ class MyWindow(Gtk.ApplicationWindow):
             cursor.execute(("insert into events_list(event_name,start_time,end_time) values('{}', '{}', '{}');".format(self.name, self.start_dt, self.end_dt)))
             cursor.execute(("commit;"))
             self.state = list(self.state)
-            self.state[1] = 24
+            self.state[1] = 0 #24
             self.state = tuple(self.state)
 
         if self.state[1] == 22:
@@ -168,7 +168,7 @@ class MyWindow(Gtk.ApplicationWindow):
             server.sendmail(self.fromaddr, self.toaddrs, self.msg)
             server.quit()
             self.state = list(self.state)
-            self.state[1] = 36
+            self.state[1] = 0 #36
             self.state = tuple(self.state)
 
         if self.state[1] == 34:
@@ -209,7 +209,7 @@ class MyWindow(Gtk.ApplicationWindow):
             data = search.search(text)
             self.buffer1.insert_at_cursor(data)
             self.state = list(self.state)
-            self.state[1] = 42
+            self.state[1] = 0 #42
             self.state = tuple(self.state)
            
         if self.state[1] == 40:
@@ -241,7 +241,7 @@ class MyWindow(Gtk.ApplicationWindow):
                 mixer.music.load('/home/vivek/Desktop/software_engineering/project/hello4.mp3')
                 mixer.music.play()
             self.state = list(self.state)
-            self.state[1] = 52
+            self.state[1] = 0 #52
             self.state = tuple(self.state)
             
         if self.state[1] == 50:
