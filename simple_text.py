@@ -51,7 +51,7 @@ class MyWindow(Gtk.ApplicationWindow):
         self.textview2 = Gtk.TextView(buffer=self.buffer2)
         self.textview2.set_wrap_mode(Gtk.WrapMode.WORD)
         scroll.add(self.textview2)
-        self.buffer2.insert_at_cursor("Commands\n")
+        self.buffer2.insert_at_cursor("Commands\nCreate event - to create a new event\nModify event - to modify an existing event\nDelete event - to delete an existing event\nSend mail - to send an email\nSentiment Analysis - to perform sentiment analysis on your thoughts\nPoem - to receive the poem of the day\nYoutube - to search anything on youtube\nGoogle - to search anything on google and receive most relevant links along with their initial contents\n")
 
 
         scrolled_window = Gtk.ScrolledWindow()
