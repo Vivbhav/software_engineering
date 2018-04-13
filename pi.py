@@ -19,7 +19,8 @@ from time import ctime
 import time
 import os
 from gtts import gTTS
-import pyttsx3
+#import pyttsx3
+
  
 def speak(audioString):
     print(audioString)

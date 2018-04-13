@@ -15,7 +15,8 @@ import search
 import sentiment
 from pygame import mixer
 import youtube_final
-import tts
+import text_to_speech
+
 try:
     cnx = MySQLdb.connect("localhost", "root", "vivbhav97", "events")
 except:
@@ -90,6 +91,7 @@ class MyWindow(Gtk.ApplicationWindow):
         if self.state[1] == 4:
             self.end_dt = parser.parse(text)
             cursor.execute(("insert into events_list(event_name,start_time,end_time) values('{}', '{}', '{}');".format(self.name, self.start_dt, self.end_dt)))
+            text_to_speech.speak("inserted your event")
             cursor.execute(("commit;"))
             self.state = list(self.state)
             self.state[1] = 0 #5
@@ -98,6 +100,7 @@ class MyWindow(Gtk.ApplicationWindow):
         if self.state[1] == 3:
             self.start_dt = parser.parse(text)
             self.buffer1.insert_at_cursor("\ninsert end time of event\n")
+            text_to_speech.speak("insert end time of event")
             self.state = list(self.state)
             self.state[1] = 4
             self.state = tuple(self.state)
@@ -105,12 +108,14 @@ class MyWindow(Gtk.ApplicationWindow):
         if self.state[1] == 2:
             self.name = text
             self.buffer1.insert_at_cursor("\ninsert start time of event\n")
+            text_to_speech.speak("insert start time of event")
             self.state = list(self.state)
             self.state[1] = 3
             self.state = tuple(self.state)
         
         if self.state[1] == 1:
             self.buffer1.insert_at_cursor("\ninsert name of event\n")
+            text_to_speech.speak("insert name of event")
             self.state = list(self.state)
             self.state[1] = 2
             self.state = tuple(self.state)
@@ -127,6 +132,7 @@ class MyWindow(Gtk.ApplicationWindow):
 
         if self.state[1] == 10:
             self.buffer1.insert_at_cursor("\nGive name of event to delete\n")
+            text_to_speech.speak("give name of the event to delete")
             self.state = list(self.state)
             self.state[1] = 11
             self.state = tuple(self.state)
@@ -144,6 +150,7 @@ class MyWindow(Gtk.ApplicationWindow):
         if self.state[1] == 22:
             self.start_dt = parser.parse(text)
             self.buffer1.insert_at_cursor("\ninsert new end time of event\n")
+            text_to_speech.speak("insert new end time of event")
             self.state = list(self.state)
             self.state[1] = 23
             self.state = tuple(self.state)
@@ -151,12 +158,14 @@ class MyWindow(Gtk.ApplicationWindow):
         if self.state[1] == 21:
             self.name = text
             self.buffer1.insert_at_cursor("\ninsert new start time of event\n")
+            text_to_speech.speak("insert new start time of event")
             self.state = list(self.state)
             self.state[1] = 22
             self.state = tuple(self.state)
         
         if self.state[1] == 20:
             self.buffer1.insert_at_cursor("\ninsert name of event to modify\n")
+            text_to_speech.speak("insert name of event to modify")
             self.state = list(self.state)
             self.state[1] = 21
             self.state = tuple(self.state)
@@ -178,6 +187,7 @@ class MyWindow(Gtk.ApplicationWindow):
         if self.state[1] == 34:
             self.username = text
             self.buffer1.insert_at_cursor("\nEnter your email password\n")
+            text_to_speech.speak("Enter you email password")
             self.state = list(self.state)
             self.state[1] = 35
             self.state = tuple(self.state)
@@ -185,6 +195,7 @@ class MyWindow(Gtk.ApplicationWindow):
         if self.state[1] == 33:
             self.msg = text
             self.buffer1.insert_at_cursor("\nEnter your username\n")
+            text_to_speech.speak("enter your username")
             self.state = list(self.state)
             self.state[1] = 34
             self.state = tuple(self.state)
@@ -192,19 +203,22 @@ class MyWindow(Gtk.ApplicationWindow):
         if self.state[1] == 32:
             self.toaddrs = text
             self.buffer1.insert_at_cursor("\nEnter content of email\n")
+            text_to_speech.speak("enter content of email")
             self.state = list(self.state)
             self.state[1] = 33
             self.state = tuple(self.state)
 
         if self.state[1] == 31:
             self.fromaddr = text
-            self.buffer1.insert_at_cursor("\nEnter email to send email to\n")
+            self.buffer1.insert_at_cursor("\nEnter recipient's email\n")
+            text_to_speech.speak("enter recipient's email")
             self.state = list(self.state)
             self.state[1] = 32
             self.state = tuple(self.state)
 
         if self.state[1] == 30:
-            self.buffer1.insert_at_cursor("\nEnter email id from where to send email\n")
+            self.buffer1.insert_at_cursor("\nEnter your email\n")
+            text_to_speech.speak("enter your email")
             self.state = list(self.state)
             self.state[1] = 31
             self.state = tuple(self.state)
@@ -222,6 +236,7 @@ class MyWindow(Gtk.ApplicationWindow):
            
         if self.state[1] == 40:
             self.buffer1.insert_at_cursor("\nEnter what do you want to google\n")
+            text_to_speech.speak("I can do it. What do you want me to look for?")
             self.state = list(self.state)
             self.state[1] = 41
             self.state = tuple(self.state)
@@ -254,6 +269,7 @@ class MyWindow(Gtk.ApplicationWindow):
             
         if self.state[1] == 50:
             self.buffer1.insert_at_cursor("\nWhat are you thinking about\n")
+            text_to_speech.speak("Tell me how are you feeling")
             self.state = list(self.state)
             self.state[1] = 51
             self.state = tuple(self.state)
@@ -279,19 +295,24 @@ class MyWindow(Gtk.ApplicationWindow):
 	
 	if self.state[1] == 70:
             self.buffer1.insert_at_cursor("\nWhat should I search on youtube, Also enter (1) to show all results or (2) to play the most relevant one\n")
+            text_to_speech.speak("You got it. Which video?")
             self.state = list(self.state)
             self.state[1] = 71
             self.state = tuple(self.state)
 	                 
 
         if self.state[1] == 5:
-            self.buffer1.insert_at_cursor("\ncreated event\n")      
+            self.buffer1.insert_at_cursor("\ncreated event\n") 
+            text_to_speech.speak("created event")     
         elif self.state[1] == 12:
-            self.buffer1.insert_at_cursor("\ndeleted event\n")      
+            self.buffer1.insert_at_cursor("\ndeleted event\n")
+            text_to_speech.speak("deleted event")      
         elif self.state[1] == 24:
-            self.buffer1.insert_at_cursor("\nmodified event\n")     
+            self.buffer1.insert_at_cursor("\nmodified event\n")
+            text_to_speech.speak("modified event")     
         elif self.state[1] == 36:
-            self.buffer1.insert_at_cursor("\nemail sent\n") 
+            self.buffer1.insert_at_cursor("\nemail sent\n")
+            text_to_speech.speak("email sent") 
         elif self.state[1] == 0:
             self.buffer1.insert_at_cursor(self.state[0])      
         #else:

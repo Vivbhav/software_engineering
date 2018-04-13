@@ -1,0 +1,53 @@
+ 1 Python Tutorial - Tutorialspoint
+https://www.tutorialspoint.com/python/
+Python is a general-purpose interpreted, interactive, object-oriented, and high-level programming language. It was created by Guido van Rossum during 1985- 1990. Like Perl, Python source code is also available under the GNU General Public License (GPL). This tutorial gives enough understanding on Python ...
+
+     1a Python 3 tutorial
+    https://www.tutorialspoint.com/python3/index.htm
+Python 3 Tutorial for Beginners - Learn Python 3 in simple and ...
+
+     1b Python Overview
+    https://www.tutorialspoint.com/python/python_overview.htm
+Python Overview - Learn Python in simple and easy steps starting ...
+
+     1c Python Tutorial in PDF
+    https://www.tutorialspoint.com/python/python_pdf_version.htm
+Python Tutorial in PDF - Learn Python in simple and easy steps ...
+
+     1d Python Modules
+    https://www.tutorialspoint.com/python/python_modules.htm
+Python Modules - Learn Python in simple and easy steps starting ...
+
+     1e Python Online Training
+    https://www.tutorialspoint.com/python_online_training/index.asp
+Python Online Training. Python is a general-purpose interpreted ...
+
+     1f Python Lists
+    https://www.tutorialspoint.com/python/python_lists.htm
+Python Lists - Learn Python in simple and easy steps starting ...
+
+ 2 Django Tutorial - Tutorialspoint
+https://www.tutorialspoint.com/django/index.htm
+Django Tutorial for Beginners - Learn Django in simple and easy steps starting from basic to advanced concepts with examples including Basics, Overview, Environment, Creating a Project, Apps Life Cycle, Admin Interface, Creating Views, URL Mapping, Template System, Models, Page Redirection, Sending E-mails, ...
+
+ 3 Flask Tutorial - Tutorialspoint
+https://www.tutorialspoint.com/flask/index.htm
+Flask is a web application framework written in Python. Armin Ronacher, who leads an international group of Python enthusiasts named Pocco, develops it. Flask is based on Werkzeug WSGI toolkit and Jinja2 template engine. Both are Pocco projects.
+
+ 4 NumPy Tutorial - Tutorialspoint
+https://www.tutorialspoint.com/numpy/index.htm
+NumPy, which stands for Numerical Python, is a library consisting of multidimensional array objects and a collection of routines for processing those arrays. Using NumPy, mathematical and logical operations on arrays can be performed. This tutorial explains the basics of NumPy such as its architecture and environment.
+
+ 5 PyQt Tutorial - Tutorialspoint
+https://www.tutorialspoint.com/pyqt/index.htm
+PyQt is a GUI widgets toolkit. It is a Python interface for Qt, one of the most powerful, and popular cross-platform GUI library. PyQt is a blend of Python programming language and the Qt library. This introductory tutorial will assist you in creating graphical applications with the help of PyQt.
+
+ 6 NumPy Matplotlib - Tutorialspoint
+https://www.tutorialspoint.com/numpy/numpy_matplotlib.htm
+Matplotlib is a plotting library for Python. It is used along with NumPy to provide an environment that is an effective open source alternative for MatLab. It can also be used with graphics toolkits like PyQt and wxPython. Matplotlib module was first written by John D. Hunter. Since 2012, Michael Droettboom is the principal ...
+
+ 7 I have learned Python from Tutorials Point. What should I do to ...
+https://www.quora.com/I-have-learned-Python-from-Tutorials-Point-What-should-I-do-to-learn-more-topics-so-that-I-can-have-more-advantages-on-my-interviews
+Go through Google's Python Class and complete all the exercises. You might learn a few more libraries as well as you take up this course. Tutorial's point though good for beginners doesn't provide coding practice. Once you are done; you can go t...
+
+googler (? for help): 
