@@ -15,6 +15,7 @@ import search
 import sentiment
 from pygame import mixer
 import youtube_final
+import tts
 try:
     cnx = MySQLdb.connect("localhost", "root", "vivbhav97", "events")
 except:
@@ -210,9 +211,10 @@ class MyWindow(Gtk.ApplicationWindow):
         
         if self.state[1] == 41:
             search.search(text)	
-	    time.sleep(15)
-	    myfile = open("out.txt", "r")
-	    data = myfile.read()
+	        #time.sleep(15)
+            myfile = open("out.txt", "r")
+            data = myfile.read()
+            print (data)
             self.buffer1.insert_at_cursor(data)
             self.state = list(self.state)
             self.state[1] = 0 #42
