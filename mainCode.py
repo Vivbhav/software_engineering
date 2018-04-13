@@ -59,6 +59,9 @@ def main_code(string):
         print ("inside youtube in maincode")
         works = os.system('python3 youtube.py ' + "cricket")    
         return (works, 0)
+    elif 'show' in filtered_sentence:
+        if 'events' in filtered_sentence:
+            return ("show", 60)
     elif 'sentiment' in filtered_sentence:
         if 'analysis' in filtered_sentence:
             #ans = sentiment.sentiment_analysis(string)

@@ -250,6 +250,12 @@ class MyWindow(Gtk.ApplicationWindow):
             self.state[1] = 51
             self.state = tuple(self.state)
              
+        if self.state[1] == 60:
+            cursor.execute("select * from events_list order by start_time;")
+            rows = [i for i in cursor]
+            to_print = str(rows).strip('[]')
+            self.buffer1.insert_at_cursor(to_print)
+             
 
         if self.state[1] == 5:
             self.buffer1.insert_at_cursor("\ncreated event\n")      
